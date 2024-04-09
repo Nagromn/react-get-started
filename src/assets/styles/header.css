@@ -2,3 +2,12 @@ header img {
     width: 50px;
     height: 50px;
 }
+
+header a {
+    text-decoration: none;
+}
+
+header a.active {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
