@@ -1,12 +1,15 @@
 import "../assets/styles/dish.css";
+import Card from "react-bootstrap/Card";
 
 const Dish = (props) => {
     return (
-        <div>
-            <img src={props.image} alt={props.alt} />
-            <h2>{props.name}</h2>
-            <strong>Prix : {props.price}</strong>
-        </div>
+        <Card>
+            <Card.Img variant="top" src={props.image} alt={props.alt} />
+            <Card.Body>
+                <Card.Title>{props.name}</Card.Title>
+                <Card.Text>Prix : {props.price}</Card.Text>
+            </Card.Body>
+        </Card>
     );
 };
 
