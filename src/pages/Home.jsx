@@ -14,6 +14,7 @@ const Home = () => {
                             alt="Tacos à l’unité"
                             name="Tacos à l’unité"
                             price="3€"
+                            slug="tacos-a-l-unite"
                         />
                     </Col>
                     <Col>
@@ -22,6 +23,7 @@ const Home = () => {
                             alt="Enchiladas"
                             name="Enchiladas"
                             price="12€"
+                            slug="enchiladas"
                         />
                     </Col>
                     <Col>
@@ -30,6 +32,7 @@ const Home = () => {
                             alt="Mole poblano"
                             name="Mole poblano"
                             price="15€"
+                            slug="mole-poblano"
                         />
                     </Col>
                 </Row>
