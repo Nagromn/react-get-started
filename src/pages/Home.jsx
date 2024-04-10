@@ -12,6 +12,7 @@ const Home = () => {
             name: "Tacos à l’unité",
             price: 3,
             slug: "tacos-a-l-unite",
+            new: true,
         },
         {
             id: 2,
@@ -20,6 +21,7 @@ const Home = () => {
             name: "Enchiladas",
             price: 12,
             slug: "enchiladas",
+            new: false,
         },
         {
             id: 3,
@@ -28,6 +30,7 @@ const Home = () => {
             name: "Mole poblano",
             price: 15,
             slug: "mole-poblano",
+            new: false,
         },
     ];
 
@@ -43,6 +46,7 @@ const Home = () => {
                                 name={dish.name}
                                 price={`${dish.price}€`}
                                 slug={dish.slug}
+                                new={dish.new}
                             />
                         </Col>
                     ))}
