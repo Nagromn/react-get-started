@@ -2,6 +2,8 @@ import Dish from "../components/Dish";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
 const Home = () => {
     const dishes = [
@@ -34,25 +36,33 @@ const Home = () => {
         },
     ];
 
+    const [showNewOnly, setShowNewOnly] = useState(false);
+
+    const handleShowNewOnly = () => {
+        setShowNewOnly(true);
+    };
+
+    const filteredDishes = dishes.filter((dish) => dish.new === true);
+
     return (
-        <>
-            <Container>
-                <Row>
-                    {dishes.map((dish) => (
-                        <Col key={dish.id}>
-                            <Dish
-                                image={dish.image}
-                                alt={dish.alt}
-                                name={dish.name}
-                                price={`${dish.price}€`}
-                                slug={dish.slug}
-                                new={dish.new}
-                            />
-                        </Col>
-                    ))}
-                </Row>
-            </Container>
-        </>
+        <Container>
+            <Button variant="primary" onClick={handleShowNewOnly}>
+                {!showNewOnly ? "Nouveautés uniquement" : "Voir tous les plats"}
+            </Button>
+            <Row>
+                {!showNewOnly
+                    ? dishes.map((dish) => (
+                          <Col key={dish.id}>
+                              <Dish {...dish} />
+                          </Col>
+                      ))
+                    : filteredDishes.map((dish) => (
+                          <Col key={dish.id}>
+                              <Dish {...dish} />
+                          </Col>
+                      ))}
+            </Row>
+        </Container>
     );
 };
 
