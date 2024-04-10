@@ -39,10 +39,12 @@ const Home = () => {
     const [showNewOnly, setShowNewOnly] = useState(false);
 
     const handleShowNewOnly = () => {
-        setShowNewOnly(true);
+        setShowNewOnly(!showNewOnly);
     };
 
-    const filteredDishes = dishes.filter((dish) => dish.new === true);
+    const filteredDishes = () => {
+        return showNewOnly ? dishes.filter((dish) => dish.new) : dishes;
+    };
 
     return (
         <Container>
@@ -50,17 +52,11 @@ const Home = () => {
                 {!showNewOnly ? "Nouveautés uniquement" : "Voir tous les plats"}
             </Button>
             <Row>
-                {!showNewOnly
-                    ? dishes.map((dish) => (
-                          <Col key={dish.id}>
-                              <Dish {...dish} />
-                          </Col>
-                      ))
-                    : filteredDishes.map((dish) => (
-                          <Col key={dish.id}>
-                              <Dish {...dish} />
-                          </Col>
-                      ))}
+                {filteredDishes().map((dish) => (
+                    <Col key={dish.id}>
+                        <Dish {...dish} />
+                    </Col>
+                ))}
             </Row>
         </Container>
     );
