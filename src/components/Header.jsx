@@ -10,13 +10,13 @@ const Header = () => {
         <header>
             <Navbar className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href="/">
+                    <NavLink to="/" className="nav-link nav-brand">
                         <img
                             src={logo}
                             className="d-inline-block align-top"
                             alt="Man"
                         />
-                    </Navbar.Brand>
+                    </NavLink>
                     <Nav className="justify-content-end">
                         <NavLink to="/" className="nav-link">
                             Accueil
