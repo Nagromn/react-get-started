@@ -36,9 +36,8 @@ const Home = () => {
             <Container>
                 <Row>
                     {dishes.map((dish) => (
-                        <Col>
+                        <Col key={dish.id}>
                             <Dish
-                                key={dish.id}
                                 image={dish.image}
                                 alt={dish.alt}
                                 name={dish.name}
