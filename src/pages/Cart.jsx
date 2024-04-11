@@ -3,9 +3,13 @@ import Row from "react-bootstrap/Row";
 import Table from "react-bootstrap/Table";
 import { useContext } from "react";
 import { CartContext } from "../utils/context/CartContext";
+import useTotalCart from "../utils/hooks/useTotalCart";
+import useTotalQuantity from "../utils/hooks/useTotalQuantity";
 
 const Cart = () => {
     const { cart } = useContext(CartContext);
+    const { totalAmount } = useTotalCart(cart);
+    const { totalQuantity } = useTotalQuantity(cart);
 
     return (
         <>
@@ -30,6 +34,12 @@ const Cart = () => {
                             ))}
                         </tbody>
                     </Table>
+                    <p className="text-end">
+                        {totalQuantity} éléments dans le panier
+                    </p>
+                    <p className="text-end">
+                        Montant : <strong>{totalAmount}€</strong>
+                    </p>
                 </Row>
             </Container>
         </>

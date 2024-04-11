@@ -6,9 +6,11 @@ import logo from "../assets/images/man-3262834_960_720.webp";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../utils/context/CartContext";
 import { useContext } from "react";
+import useTotalQuantity from "../utils/hooks/useTotalQuantity";
 
 const Header = () => {
     const { cart } = useContext(CartContext);
+    const { totalQuantity } = useTotalQuantity(cart);
 
     return (
         <header>
@@ -29,7 +31,7 @@ const Header = () => {
                             A propos
                         </NavLink>
                         <NavLink to="/cart" className="nav-link">
-                            Panier ({cart ? cart.length : 0})
+                            Panier ({totalQuantity || 0})
                         </NavLink>
                     </Nav>
                 </Container>
