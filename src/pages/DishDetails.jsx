@@ -7,9 +7,9 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-const DishDetails = () => {
+const DishDetails = ({ addToCart }) => {
     const { slug } = useParams();
-    const [dish, setDish] = useState(null);
+    const [dish, setDish] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,7 +36,12 @@ const DishDetails = () => {
                             <p>
                                 <strong>{dish.price}€</strong>
                             </p>
-                            <Button variant="primary">Commander</Button>
+                            <Button
+                                variant="primary"
+                                onClick={() => addToCart(dish)}
+                            >
+                                Commander
+                            </Button>
                         </Col>
                     </Row>
                 </Container>

@@ -5,15 +5,27 @@ import About from "./pages/About";
 import Layout from "./components/Layout";
 import DishDetails from "./pages/DishDetails";
 import NotFound from "./pages/NotFound";
+import Cart from "./pages/Cart";
+import { useState } from "react";
 
 function App() {
+    const [cart, setCart] = useState([]);
+
+    const addToCart = (dish) => {
+        setCart([...cart, dish]);
+    };
+
     return (
         <div className="App">
             <Routes>
-                <Route element={<Layout />}>
+                <Route element={<Layout cart={cart} />}>
                     <Route index element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="plat/:slug" element={<DishDetails />} />
+                    <Route path="about" element={<About />} />
+                    <Route
+                        path="plat/:slug"
+                        element={<DishDetails addToCart={addToCart} />}
+                    />
+                    <Route path="cart" element={<Cart cart={cart} />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

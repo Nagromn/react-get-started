@@ -5,7 +5,8 @@ import Nav from "react-bootstrap/Nav";
 import logo from "../assets/images/man-3262834_960_720.webp";
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ cart }) => {
+    console.log(cart);
     return (
         <header>
             <Navbar className="bg-body-tertiary">
@@ -23,6 +24,10 @@ const Header = () => {
                         </NavLink>
                         <NavLink to="/about" className="nav-link">
                             A propos
+                        </NavLink>
+                        <NavLink to="/cart" className="nav-link">
+                            {console.log(cart)}
+                            Panier ({cart && cart.length ? cart.length : 0})
                         </NavLink>
                     </Nav>
                 </Container>
