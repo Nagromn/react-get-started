@@ -2,15 +2,17 @@ import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import dishesData from "../data/dishes.json";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../utils/context/CartContext";
 
-const DishDetails = ({ addToCart }) => {
+const DishDetails = () => {
     const { slug } = useParams();
     const [dish, setDish] = useState();
     const navigate = useNavigate();
+    const { addToCart } = useContext(CartContext);
 
     useEffect(() => {
         const getSlug = dishesData.find((dish) => dish.slug === slug);

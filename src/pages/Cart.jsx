@@ -1,8 +1,12 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Table from "react-bootstrap/Table";
+import { useContext } from "react";
+import { CartContext } from "../utils/context/CartContext";
 
-const Cart = ({ cart }) => {
+const Cart = () => {
+    const { cart } = useContext(CartContext);
+
     return (
         <>
             <Container>
@@ -13,6 +17,7 @@ const Cart = ({ cart }) => {
                             <tr>
                                 <th>Nom</th>
                                 <th>Prix</th>
+                                <th>Quantité</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -20,6 +25,7 @@ const Cart = ({ cart }) => {
                                 <tr key={index}>
                                     <td>{dish.name}</td>
                                     <td>{dish.price}€</td>
+                                    <td>{dish.quantity}</td>
                                 </tr>
                             ))}
                         </tbody>

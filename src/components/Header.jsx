@@ -4,9 +4,12 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import logo from "../assets/images/man-3262834_960_720.webp";
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../utils/context/CartContext";
+import { useContext } from "react";
 
-const Header = ({ cart }) => {
-    console.log(cart);
+const Header = () => {
+    const { cart } = useContext(CartContext);
+
     return (
         <header>
             <Navbar className="bg-body-tertiary">
@@ -26,8 +29,7 @@ const Header = ({ cart }) => {
                             A propos
                         </NavLink>
                         <NavLink to="/cart" className="nav-link">
-                            {console.log(cart)}
-                            Panier ({cart && cart.length ? cart.length : 0})
+                            Panier ({cart ? cart.length : 0})
                         </NavLink>
                     </Nav>
                 </Container>
