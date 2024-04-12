@@ -7,25 +7,35 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../utils/context/CartContext";
+import { Helmet } from "react-helmet-async";
 
 const DishDetails = () => {
     const { slug } = useParams();
-    const [dish, setDish] = useState();
+    const [dish, setDish] = useState(null);
     const navigate = useNavigate();
     const { addToCart } = useContext(CartContext);
+    const title = dish ? dish.name : "Plat non trouvé";
 
     useEffect(() => {
         const getSlug = dishesData.find((dish) => dish.slug === slug);
 
         if (!getSlug) {
             navigate("/plat-non-trouve");
+            return;
         }
 
         setDish(getSlug);
     }, [slug, navigate]);
 
+    if (!dish) {
+        return <div>Chargement...</div>;
+    }
+
     return (
         <>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
             {dish && (
                 <Container>
                     <Row>

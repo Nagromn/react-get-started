@@ -5,14 +5,19 @@ import { useContext } from "react";
 import { CartContext } from "../utils/context/CartContext";
 import useTotalCart from "../utils/hooks/useTotalCart";
 import useTotalQuantity from "../utils/hooks/useTotalQuantity";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
     const { cart } = useContext(CartContext);
     const { totalAmount } = useTotalCart(cart);
     const { totalQuantity } = useTotalQuantity(cart);
+    const title = "Panier";
 
     return (
         <>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
             <Container>
                 <Row>
                     <h1>Panier</h1>

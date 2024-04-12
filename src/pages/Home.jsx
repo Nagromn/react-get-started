@@ -24,19 +24,23 @@ const Home = () => {
     };
 
     return (
-        <Container>
-            <Button variant="primary" onClick={handleShowNewOnly}>
-                {!showNewOnly ? "Nouveautés uniquement" : "Voir tous les plats"}
-            </Button>
-            <Row>
-                {dishes.length > 0 &&
-                    dishes.map((dish) => (
-                        <Col key={dish.id}>
-                            <Dish {...dish} />
-                        </Col>
-                    ))}
-            </Row>
-        </Container>
+        <>
+            <Container>
+                <Button variant="primary" onClick={handleShowNewOnly}>
+                    {!showNewOnly
+                        ? "Nouveautés uniquement"
+                        : "Voir tous les plats"}
+                </Button>
+                <Row>
+                    {dishes.length > 0 &&
+                        dishes.map((dish) => (
+                            <Col key={dish.id}>
+                                <Dish {...dish} />
+                            </Col>
+                        ))}
+                </Row>
+            </Container>
+        </>
     );
 };
 

@@ -1,9 +1,15 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
+    const title = "About";
+
     return (
         <>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
             <Container>
                 <Row>
                     <h1>A propos</h1>
