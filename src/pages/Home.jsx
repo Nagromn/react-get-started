@@ -5,10 +5,12 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import dishesData from "../data/dishes.json";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     const [showNewOnly, setShowNewOnly] = useState(false);
     const [dishes, setDishesData] = useState([]);
+    const title = "Mexican Food";
 
     useEffect(() => {
         const filteredDishes = () => {
@@ -25,6 +27,9 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
             <Container>
                 <Button variant="primary" onClick={handleShowNewOnly}>
                     {!showNewOnly
